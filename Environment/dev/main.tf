@@ -21,5 +21,15 @@ module "key_vault" {
     depends_on = [ module.resource_grp ]
     source = "../../Modules/azurerm_key_vault"
     kv = var.kv
-  
+}
+module "Linux_virtual_machine" {
+  depends_on = [ module.subnet ]
+  source = "../../Modules/azurerm_virtual_machine"
+  vms = var.vms
+}
+module "network_security_grp" {
+  depends_on = [ module.Linux_virtual_machine, module.subnet ]
+  source = "../../Modules/azurerm_nsg"
+  nsgs = var.nsgs
+  security_rule = var.security_rule
 }

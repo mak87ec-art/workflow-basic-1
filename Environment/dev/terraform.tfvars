@@ -68,3 +68,57 @@ kv = {
     storage_permissions         = ["Get"]
   }
 }
+nsgs = {
+  nsg1 = {
+    nsg_name = "netflix-nsg"
+    loc      = "central india"
+    rg_name  = "rg-humana"
+    nic_name = "netflix-nic"
+  }
+}
+security_rule = {
+  ssh = {
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "AzureBastionSubnet"
+    destination_address_prefix = "*"
+  }
+  http = {
+    priority                   = 101
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "AzureBastionSubnet"
+    destination_address_prefix = "*"
+  }
+}
+
+vms = {
+  vm1 = {
+    nic_name                        = "netflix-nic"
+    loc                             = "central india"
+    rg_name                         = "rg-humana"
+    config_name                     = "internal"
+    private_ip_address_allocation   = "Dynamic"
+    subnet_name                     = "netflix_subnet"
+    vnet_name                       = "netflix_vnet"
+    vm_name                         = "netflix-vm"
+    size                            = "Standard_D2s_v3"
+    admin_username                  = "adminuser"
+    admin_password                  = "Adminuser@123"
+    disable_password_authentication = false
+    caching                         = "ReadWrite"
+    storage_account_type            = "Standard_LRS"
+    publisher                       = "Canonical"
+    offer                           = "0001-com-ubuntu-server-jammy"
+    sku                             = "22_04-lts"
+    version                         = "latest"
+  }
+}
+
