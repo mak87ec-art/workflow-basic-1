@@ -9,7 +9,7 @@ terraform {
     resource_group_name = "mak"
     storage_account_name = "storageforstate007"
     container_name = "state-container"
-    key = "dev-state"
+    key = "test-state"
     
   }
 }
