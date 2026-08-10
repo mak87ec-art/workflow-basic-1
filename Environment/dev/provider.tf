@@ -6,11 +6,11 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name = "mak"
+    resource_group_name  = "mak"
     storage_account_name = "storageforstate007"
-    container_name = "state-container"
-    key = "test-state"
-    
+    container_name       = "state-container"
+    key                  = "test-state"
+
   }
 }
 

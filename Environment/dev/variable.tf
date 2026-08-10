@@ -4,5 +4,8 @@ variable "subnets" {}
 variable "BHs" {}
 variable "kv" {}
 variable "nsgs" {}
-variable "security_rule"{}
+variable "security_rule" {}
 variable "vms" {}
+variable "lbs" {}
+variable "appgws" {}
+variable "storage_accounts" {}

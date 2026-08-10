@@ -1,20 +1,20 @@
 rgs = {
   rg1 = {
     rg_name = "rg-humana"
-    loc     = "central india"
+    loc     = "south africa north"
   }
 }
 vnets = {
   vnet1 = {
     vnet_name     = "netflix_vnet"
     rg_name       = "rg_humana"
-    loc           = "central india"
+    loc           = "south africa north"
     address_space = ["10.0.0.0/16"]
   }
   vnet2 = {
     vnet_name     = "Starbuck_vnet"
     rg_name       = "rg_humana"
-    loc           = "central india"
+    loc           = "south africa north"
     address_space = ["10.0.0.0/16"]
   }
 }
@@ -37,11 +37,17 @@ subnets = {
     address_prefixes = ["10.0.3.0/26"]
     rg_name          = "rg_humana"
   }
+  subnet4 = {
+    subnet_name      = "appgw_subnet"
+    vnet_name        = "netflix_vnet"
+    address_prefixes = ["10.0.4.0/24"]
+    rg_name          = "rg_humana"
+  }
 }
 BHs = {
   BH1 = {
     pip_name          = "bastion_pip"
-    loc               = "central india"
+    loc               = "south africa north"
     rg_name           = "rg_humana"
     sku               = "Standard"
     allocation_method = "Static"
@@ -56,7 +62,7 @@ BHs = {
 kv = {
   kv1 = {
     kv_name                     = "kv-humana"
-    loc                         = "central india"
+    loc                         = "south africa north"
     rg_name                     = "rg_humana"
     rbac_authorization_enabled  = false
     enabled_for_disk_encryption = true
@@ -71,7 +77,7 @@ kv = {
 nsgs = {
   nsg1 = {
     nsg_name = "netflix-nsg"
-    loc      = "central india"
+    loc      = "south africa north"
     rg_name  = "rg-humana"
     nic_name = "netflix-nic"
   }
@@ -102,14 +108,14 @@ security_rule = {
 vms = {
   vm1 = {
     nic_name                        = "netflix-nic"
-    loc                             = "central india"
+    loc                             = "south africa north"
     rg_name                         = "rg-humana"
     config_name                     = "internal"
     private_ip_address_allocation   = "Dynamic"
     subnet_name                     = "netflix_subnet"
     vnet_name                       = "netflix_vnet"
     vm_name                         = "netflix-vm"
-    size                            = "Standard_D2s_v3"
+    size                            = "Standard_DS1_v2"
     admin_username                  = "adminuser"
     admin_password                  = "Adminuser@123"
     disable_password_authentication = false
@@ -122,3 +128,32 @@ vms = {
   }
 }
 
+lbs = {
+  lb1 = {
+    lb_name  = "lb-humana"
+    loc      = "south africa north"
+    rg_name  = "rg-humana"
+    pip_name = "lb-pip-humana"
+  }
+}
+
+appgws = {
+  appgw1 = {
+    appgw_name  = "appgw-humana"
+    loc         = "south africa north"
+    rg_name     = "rg-humana"
+    subnet_name = "appgw_subnet"
+    vnet_name   = "netflix_vnet"
+    pip_name    = "appgw-pip-humana"
+  }
+}
+
+storage_accounts = {
+  sa1 = {
+    sa_name                  = "sahumana123"
+    rg_name                  = "rg-humana"
+    loc                      = "south africa north"
+    account_tier             = "Standard"
+    account_replication_type = "LRS"
+  }
+}
