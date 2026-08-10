@@ -13,7 +13,7 @@ module "subnet" {
   subnets    = var.subnets
 }
 module "bastion_host" {
-  depends_on = [module.subnet]
+  depends_on = [module.subnet, module.resource_grp]
   source     = "../../Modules/azurerm_bastion"
   BHs        = var.BHs
 }
@@ -23,12 +23,12 @@ module "key_vault" {
   kv         = var.kv
 }
 module "Linux_virtual_machine" {
-  depends_on = [module.subnet]
+  depends_on = [module.subnet, module.resource_grp]
   source     = "../../Modules/azurerm_virtual_machine"
   vms        = var.vms
 }
 module "network_security_grp" {
-  depends_on    = [module.Linux_virtual_machine, module.subnet]
+  depends_on    = [module.Linux_virtual_machine, module.subnet, module.resource_grp]
   source        = "../../Modules/azurerm_nsg"
   nsgs          = var.nsgs
   security_rule = var.security_rule
@@ -41,7 +41,7 @@ module "load_balancer" {
 }
 
 module "application_gw" {
-  depends_on = [module.subnet]
+  depends_on = [module.subnet, module.resource_grp]
   source     = "../../Modules/azurerm_applicationGW"
   appgws     = var.appgws
 }
