@@ -126,6 +126,46 @@ vms = {
     sku                             = "22_04-lts"
     version                         = "latest"
   }
+  vm2 = {
+    nic_name                        = "starbucks-nic"
+    loc                             = "south africa north"
+    rg_name                         = "rg-humana"
+    config_name                     = "internal"
+    private_ip_address_allocation   = "Dynamic"
+    subnet_name                     = "starbucks_subnet"
+    vnet_name                       = "starbucks_vnet"
+    vm_name                         = "starbucks-vm"
+    size                            = "Standard_DS1_v2"
+    admin_username                  = "adminuser"
+    admin_password                  = "Adminuser@123"
+    disable_password_authentication = false
+    caching                         = "ReadWrite"
+    storage_account_type            = "Standard_LRS"
+    publisher                       = "Canonical"
+    offer                           = "0001-com-ubuntu-server-jammy"
+    sku                             = "22_04-lts"
+    version                         = "latest"
+  }
+   vm3 = {
+    nic_name                        = "Airtel-nic"
+    loc                             = "south africa north"
+    rg_name                         = "rg-humana"
+    config_name                     = "internal"
+    private_ip_address_allocation   = "Dynamic"
+    subnet_name                     = "starbuck_subnet"
+    vnet_name                       = "starbuck_vnet"
+    vm_name                         = "Airtel-vm"
+    size                            = "Standard_DS1_v2"
+    admin_username                  = "adminuser"
+    admin_password                  = "Adminuser@123"
+    disable_password_authentication = false
+    caching                         = "ReadWrite"
+    storage_account_type            = "Standard_LRS"
+    publisher                       = "Canonical"
+    offer                           = "0001-com-ubuntu-server-jammy"
+    sku                             = "22_04-lts"
+    version                         = "latest"
+  }
 }
 
 lbs = {
