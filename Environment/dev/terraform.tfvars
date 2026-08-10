@@ -90,7 +90,7 @@ security_rule = {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "AzureBastionSubnet"
+    source_address_prefix      = "10.0.3.0/26"
     destination_address_prefix = "*"
   }
   http = {
@@ -100,7 +100,7 @@ security_rule = {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "80"
-    source_address_prefix      = "AzureBastionSubnet"
+    source_address_prefix      = "10.0.3.0/26"
     destination_address_prefix = "*"
   }
 }
