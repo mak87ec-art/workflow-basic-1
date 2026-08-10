@@ -18,18 +18,36 @@ module "bastion_host" {
   BHs        = var.BHs
 }
 module "key_vault" {
-    depends_on = [ module.resource_grp ]
-    source = "../../Modules/azurerm_key_vault"
-    kv = var.kv
+  depends_on = [module.resource_grp]
+  source     = "../../Modules/azurerm_key_vault"
+  kv         = var.kv
 }
 module "Linux_virtual_machine" {
-  depends_on = [ module.subnet ]
-  source = "../../Modules/azurerm_virtual_machine"
-  vms = var.vms
+  depends_on = [module.subnet]
+  source     = "../../Modules/azurerm_virtual_machine"
+  vms        = var.vms
 }
 module "network_security_grp" {
-  depends_on = [ module.Linux_virtual_machine, module.subnet ]
-  source = "../../Modules/azurerm_nsg"
-  nsgs = var.nsgs
+  depends_on    = [module.Linux_virtual_machine, module.subnet]
+  source        = "../../Modules/azurerm_nsg"
+  nsgs          = var.nsgs
   security_rule = var.security_rule
+}
+
+module "load_balancer" {
+  depends_on = [module.resource_grp]
+  source     = "../../Modules/azurerm_Load_Balancer"
+  lbs        = var.lbs
+}
+
+module "application_gw" {
+  depends_on = [module.subnet]
+  source     = "../../Modules/azurerm_applicationGW"
+  appgws     = var.appgws
+}
+
+module "storage_account" {
+  depends_on       = [module.resource_grp]
+  source           = "../../Modules/azurerm_storage_account"
+  storage_accounts = var.storage_accounts
 }

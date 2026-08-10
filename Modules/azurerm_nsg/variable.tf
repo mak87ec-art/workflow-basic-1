@@ -1,3 +1,3 @@
 variable "nsgs" {}
-variable "security_rule"{}
+variable "security_rule" {}
   
