@@ -166,6 +166,26 @@ vms = {
     sku                             = "22_04-lts"
     version                         = "latest"
   }
+   vm4 = {
+    nic_name                        = "Jio-nic"
+    loc                             = "south africa north"
+    rg_name                         = "rg-humana"
+    config_name                     = "internal"
+    private_ip_address_allocation   = "Dynamic"
+    subnet_name                     = "starbuck_subnet"
+    vnet_name                       = "starbuck_vnet"
+    vm_name                         = "Jio-vm"
+    size                            = "Standard_DS1_v2"
+    admin_username                  = "adminuser"
+    admin_password                  = "Adminuser@123"
+    disable_password_authentication = false
+    caching                         = "ReadWrite"
+    storage_account_type            = "Standard_LRS"
+    publisher                       = "Canonical"
+    offer                           = "0001-com-ubuntu-server-jammy"
+    sku                             = "22_04-lts"
+    version                         = "latest"
+  }
 }
 
 lbs = {
