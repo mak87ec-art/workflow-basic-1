@@ -9,3 +9,4 @@ variable "vms" {}
 variable "lbs" {}
 variable "appgws" {}
 variable "storage_accounts" {}
+variable "peerings" {}

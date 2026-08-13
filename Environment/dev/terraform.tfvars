@@ -217,3 +217,22 @@ storage_accounts = {
     account_replication_type = "LRS"
   }
 }
+
+peerings = {
+  peering1 = {
+    peering_name                 = "netflix-to-starbuck"
+    rg_name                      = "rg-humana"
+    vnet_name                    = "netflix_vnet"
+    remote_vnet_name             = "Starbuck_vnet"
+    allow_virtual_network_access = true
+    allow_forwarded_traffic      = true
+  }
+  peering2 = {
+    peering_name                 = "starbuck-to-netflix"
+    rg_name                      = "rg-humana"
+    vnet_name                    = "Starbuck_vnet"
+    remote_vnet_name             = "netflix_vnet"
+    allow_virtual_network_access = true
+    allow_forwarded_traffic      = true
+  }
+}

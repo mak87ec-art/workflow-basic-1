@@ -51,3 +51,10 @@ module "storage_account" {
   source           = "../../Modules/azurerm_storage_account"
   storage_accounts = var.storage_accounts
 }
+
+module "vnet_peering" {
+  depends_on = [module.virtual_network]
+  source     = "../../Modules/azurerm_vnet_peering"
+  peerings   = var.peerings
+  vnet_ids   = module.virtual_network.vnet_ids
+}
